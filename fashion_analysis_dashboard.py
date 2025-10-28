@@ -35,6 +35,43 @@ st.markdown("""
         color: white;
         text-align: center;
     }
+    .glossary-card {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 1.2rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        border-left: 4px solid #2E86AB;
+    }
+    .glossary-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #2E86AB;
+        margin-bottom: 0.5rem;
+    }
+    .glossary-content {
+        font-size: 1rem;
+        color: #333;
+        line-height: 1.6;
+    }
+    .category-header {
+        background: linear-gradient(90deg, #2E86AB 0%, #5FA8D3 100%);
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .example-tag {
+        display: inline-block;
+        background: #e3f2fd;
+        color: #1976d2;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        margin: 0.2rem;
+        font-size: 0.9rem;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -111,7 +148,7 @@ if uploaded_file is not None:
             st.metric("Gender Categories", filtered_df['Gender-Target'].nunique())
     
     # Main Dashboard Layout
-    tab1, tab2, tab3, tab4 = st.tabs(["📈 Brand Analysis", "🎯 Market Trends", "👥 Demographics", "🎨 Product Insights"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["📈 Brand Analysis", "🎯 Market Trends", "👥 Demographics", "🎨 Product Insights", "📚 Fashion Glossary"])
     
     # TAB 1: Brand Analysis
     with tab1:
@@ -679,6 +716,273 @@ if uploaded_file is not None:
                 title_font_size=TITLE_FONT_SIZE
             )
             st.plotly_chart(fig_silhouette, use_container_width=True)
+    
+    # TAB 5: Fashion Glossary
+    with tab5:
+        st.markdown("## 📖 Fashion Analytics Glossary")
+        st.markdown("*Understanding the terminology used in fashion product analysis*")
+        
+        # Product Categorization
+        st.markdown('<div class="category-header">🏷️ Product Categorization</div>', unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Product Type</div>
+                <div class="glossary-content">
+                    The main category of clothing or accessory item:
+                    <br><br>
+                    <span class="example-tag">Co-ord Set</span> Matching top and bottom designed together
+                    <br>
+                    <span class="example-tag">Dress</span> One-piece garments (dresses, gowns, jumpsuits)
+                    <br>
+                    <span class="example-tag">Outerwear</span> Jackets, coats, blazers worn as outer layer
+                    <br>
+                    <span class="example-tag">Topwear</span> Shirts, blouses, sweaters, t-shirts
+                    <br>
+                    <span class="example-tag">Bottomwear</span> Pants, skirts, shorts, trousers
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Layering Position</div>
+                <div class="glossary-content">
+                    Indicates where the garment sits in a layered outfit:
+                    <br><br>
+                    <span class="example-tag">Base Layer</span> T-shirts, tank tops worn directly on skin
+                    <br>
+                    <span class="example-tag">Mid Layer</span> Shirts, sweaters, vests for insulation
+                    <br>
+                    <span class="example-tag">Outer Layer</span> Jackets, coats (outermost garment)
+                    <br>
+                    <span class="example-tag">Standalone</span> Dresses, jumpsuits (single-piece)
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Design Complexity</div>
+                <div class="glossary-content">
+                    Level of detail and sophistication in garment construction:
+                    <br><br>
+                    <span class="example-tag">Simple</span> Basic, minimal details, plain design
+                    <br>
+                    <span class="example-tag">Moderate</span> Some detailing, standard construction
+                    <br>
+                    <span class="example-tag">High</span> Notable detailing, interesting construction
+                    <br>
+                    <span class="example-tag">Highly Intricate</span> Complex, elaborate, sophisticated techniques
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Silhouette</div>
+                <div class="glossary-content">
+                    The overall shape and fit of the garment:
+                    <br><br>
+                    <span class="example-tag">Oversized</span> Deliberately larger, loose fit
+                    <br>
+                    <span class="example-tag">Relaxed</span> Comfortable, easy fit
+                    <br>
+                    <span class="example-tag">Slim/Fitted</span> Close to body, tailored
+                    <br>
+                    <span class="example-tag">A-Line</span> Fitted at top, flares out at bottom
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # Color & Pattern
+        st.markdown('<div class="category-header">🎨 Color & Pattern Analysis</div>', unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Color Palette Type</div>
+                <div class="glossary-content">
+                    The color scheme used in the garment:
+                    <br><br>
+                    <span class="example-tag">Monochrome</span> Single color in various shades
+                    <br>
+                    <span class="example-tag">Complementary</span> Opposite colors on color wheel
+                    <br>
+                    <span class="example-tag">Analogous</span> Adjacent colors on color wheel
+                    <br>
+                    <span class="example-tag">Neutral</span> Blacks, whites, grays, beiges
+                    <br>
+                    <span class="example-tag">Earth Tones</span> Browns, tans, olive, rust
+                    <br>
+                    <span class="example-tag">Pastels</span> Soft, light colors
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Texture Quality</div>
+                <div class="glossary-content">
+                    The surface feel and appearance of the fabric:
+                    <br><br>
+                    <span class="example-tag">Smooth</span> Even, flat surface
+                    <br>
+                    <span class="example-tag">Glossy</span> Shiny, reflective finish
+                    <br>
+                    <span class="example-tag">Ribbed</span> Raised parallel lines
+                    <br>
+                    <span class="example-tag">Quilted</span> Padded, stitched pattern
+                    <br>
+                    <span class="example-tag">Knit</span> Interlocking loops texture
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Pattern Type</div>
+                <div class="glossary-content">
+                    Visual patterns or prints on the fabric:
+                    <br><br>
+                    <span class="example-tag">Solid</span> Single uniform color
+                    <br>
+                    <span class="example-tag">Striped</span> Parallel lines pattern
+                    <br>
+                    <span class="example-tag">Graphic Print</span> Artistic designs or images
+                    <br>
+                    <span class="example-tag">Geometric</span> Shapes like squares, triangles
+                    <br>
+                    <span class="example-tag">Floral</span> Flower and botanical patterns
+                    <br>
+                    <span class="example-tag">Color Block</span> Large areas of different colors
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Embellishments</div>
+                <div class="glossary-content">
+                    Decorative elements added to garments:
+                    <br><br>
+                    <span class="example-tag">Logos</span> Brand markings and symbols
+                    <br>
+                    <span class="example-tag">Embroidery</span> Stitched decorative designs
+                    <br>
+                    <span class="example-tag">Sequins</span> Small shiny decorative discs
+                    <br>
+                    <span class="example-tag">Studs</span> Metal decorative fasteners
+                    <br>
+                    <span class="example-tag">Lace</span> Delicate openwork fabric
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # Target Demographics
+        st.markdown('<div class="category-header">👥 Target Demographics</div>', unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Gender Target</div>
+                <div class="glossary-content">
+                    Intended gender category for the product:
+                    <br><br>
+                    <span class="example-tag">Men</span> Designed specifically for men
+                    <br>
+                    <span class="example-tag">Women</span> Designed specifically for women
+                    <br>
+                    <span class="example-tag">Kids</span> Children's clothing
+                    <br>
+                    <span class="example-tag">Unisex</span> Suitable for all genders
+                    <br>
+                    <span class="example-tag">Gender-Neutral</span> No specific gender design
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Occasion Fit</div>
+                <div class="glossary-content">
+                    Suitable occasions or settings for wearing:
+                    <br><br>
+                    <span class="example-tag">Casual</span> Everyday, relaxed wear
+                    <br>
+                    <span class="example-tag">Smart-Casual</span> Polished yet comfortable
+                    <br>
+                    <span class="example-tag">Business</span> Professional workplace
+                    <br>
+                    <span class="example-tag">Formal</span> Special events, ceremonies
+                    <br>
+                    <span class="example-tag">Athletic</span> Sports and fitness activities
+                    <br>
+                    <span class="example-tag">Festival</span> Music festivals, outdoor events
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Age Target</div>
+                <div class="glossary-content">
+                    Age group the product is designed for:
+                    <br><br>
+                    <span class="example-tag">Kids (0-12)</span> Children's sizes and styles
+                    <br>
+                    <span class="example-tag">Teen (13-19)</span> Youth fashion trends
+                    <br>
+                    <span class="example-tag">Young Adult (20-29)</span> Contemporary styles
+                    <br>
+                    <span class="example-tag">Adult (30-49)</span> Mature, versatile fashion
+                    <br>
+                    <span class="example-tag">Mature (50+)</span> Classic, refined styles
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div class="glossary-card">
+                <div class="glossary-title">Primary Material</div>
+                <div class="glossary-content">
+                    Main fabric or material composition:
+                    <br><br>
+                    <span class="example-tag">Cotton</span> Natural, breathable fiber
+                    <br>
+                    <span class="example-tag">Polyester</span> Synthetic, durable fabric
+                    <br>
+                    <span class="example-tag">Denim</span> Sturdy cotton twill fabric
+                    <br>
+                    <span class="example-tag">Leather</span> Animal hide material
+                    <br>
+                    <span class="example-tag">Technical Fabric</span> Performance materials
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # Additional Info Box
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                    padding: 1.5rem; border-radius: 12px; color: white; margin-top: 2rem;">
+            <h3 style="margin-top: 0;">💡 Pro Tip</h3>
+            <p style="margin-bottom: 0; line-height: 1.6;">
+                Understanding these fashion terms helps in accurate product categorization, better inventory management, 
+                and creating more effective marketing strategies. Use the filters in the sidebar to explore how these 
+                attributes are distributed across your product catalog!
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     
     # Download filtered data
     st.sidebar.markdown("---")
